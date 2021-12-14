@@ -1,29 +1,35 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom';
 
-const Login = () => {
-  return (<h2>Login</h2>)
-}
-const FriendsList = () => {
-  return (<h2>FriendsList</h2>)
-}
-const AddFriend = () => {
-  return (<h2>AddFriend</h2>)
-}
+import Login from './components/Login';
+import FriendsList from './components/FriendsList';
+import AddFriend from './components/AddFriend';
+
+
 function App() {
   return (
     <Router>
     <div className="App">
+      <header>
+        <h1>Friends Database</h1>
+        <Link className="link" to="login">Login</Link>
+        <Link className="link" to="friends">Friends List</Link>
+        <Link className="link" to="friends/add">Add Friends</Link>
+        <Link className ="link" to="friends">Logout</Link>
+      </header>
       <Route exact path="/">
         <Login/>
       </Route>
+
       <Route exact path="/login">
         <Redirect to="/"/>
       </Route>
+
       <Route exact path="/friends">
         <FriendsList/>
       </Route>
+
       <Route exact path="/friends/add">
         <AddFriend/>
       </Route>
